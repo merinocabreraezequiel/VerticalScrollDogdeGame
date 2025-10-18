@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://kc4e3yrj3pto"]
+
+[ext_resource type="Script" uid="uid://baaodlg65kjg1" path="res://game.gd" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://dgjjxe01jetj5" path="res://background.gd" id="2_7jktm"]
+[ext_resource type="Script" uid="uid://cd08vbpqd3dcd" path="res://coche.gd" id="2_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://68usq0hh5cyu" path="res://obstaculo.tscn" id="2_feb5d"]
+[ext_resource type="Shader" uid="uid://d106xwvlloy5i" path="res://background.gdshader" id="3_ryrav"]
+[ext_resource type="Texture2D" uid="uid://bastt8wku503d" path="res://carretera.png" id="4_eow3j"]
+[ext_resource type="Texture2D" uid="uid://7md2ly8kq0g0" path="res://car.png" id="6_eow3j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j5wjh"]
+shader = ExtResource("3_ryrav")
+shader_parameter/scroll_y = 0.0
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_e2o6t")
+
+[node name="background" type="Sprite2D" parent="."]
+script = ExtResource("2_7jktm")
+
+[node name="TextureRect" type="TextureRect" parent="background"]
+material = SubResource("ShaderMaterial_j5wjh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 806.0
+offset_bottom = 809.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_eow3j")
+stretch_mode = 1
+
+[node name="coche" type="CharacterBody2D" parent="."]
+floor_block_on_wall = false
+script = ExtResource("2_fc0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="coche"]
+position = Vector2(85, 679)
+scale = Vector2(0.36144578, 0.36144575)
+texture = ExtResource("6_eow3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coche"]
+
+[node name="obstaculos" parent="." instance=ExtResource("2_feb5d")]
+position = Vector2(410, 403)
+
+[node name="velocidad" type="Timer" parent="."]
+
+[node name="spawnTimer" type="Timer" parent="."]
+
+[node name="UI" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

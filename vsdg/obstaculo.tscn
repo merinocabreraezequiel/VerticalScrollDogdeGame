@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://68usq0hh5cyu"]
+
+[ext_resource type="Script" uid="uid://cjnp3kjcm5xnd" path="res://obstaculo.gd" id="1_q7004"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q7004"]
+radius = 52.009613
+
+[node name="obstaculo" type="Area2D"]
+script = ExtResource("1_q7004")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q7004")
