@@ -1,0 +1,59 @@
+extends Node2D
+
+@onready var car = $Car
+@onready var bg = $background
+@onready var timer_speedup = $velocidad
+@onready var timer_spawn = $spawnTimer
+@onready var ui = $UI
+
+var scroll_speed = 200.0
+var speed_multiplier = 1.0
+var obstacles = []
+var is_game_over = false
+
+func _ready():
+	timer_speedup.wait_time = 30.0  # cada 30 segundos
+	timer_speedup.start()
+	timer_spawn.wait_time = 1.0     # generar obstáculo cada 1 seg (ajustable)
+	timer_spawn.start()
+	ui.text = "Tiempo: 0 s"
+	
+func _process(delta):
+	if not is_game_over:
+		bg.scroll_speed = -1* scroll_speed * speed_multiplier #* delta
+	else:
+		bg.is_scrolling = false
+	#if is_game_over:
+	#	return
+	
+	# --- Mueve el fondo ---
+	#bg.position.y += scroll_speed * speed_multiplier * delta
+	#if bg.position.y >= bg.texture.get_height():
+	#	bg.position.y = 0
+	
+	# --- Actualiza UI ---
+	ui.text = "Tiempo: %.1f s" % (Time.get_ticks_msec() / 1000.0)
+
+func _on_Timer_SpeedUp_timeout():
+	speed_multiplier *= 1.05
+	print("🚀 Velocidad aumentada a %.2f" % speed_multiplier)
+
+func _on_Timer_Spawn_timeout():
+	spawn_obstacle()
+
+func spawn_obstacle():
+	var obstacle_scene = preload("res://obstaculo.tscn")
+	var obstacle = obstacle_scene.instantiate()
+	var screen_size = get_viewport_rect().size
+	obstacle.position = Vector2(randf_range(50, screen_size.x - 50), -50)
+	add_child(obstacle)
+	obstacles.append(obstacle)
+
+func game_over():
+	if is_game_over:
+		return
+	is_game_over = true
+	print("💥 Juego terminado!")
+	ui.text = "💀 Fin del juego - Tiempo: %.1f s" % (Time.get_ticks_msec() / 1000.0)
+	timer_spawn.stop()
+	timer_speedup.stop()
