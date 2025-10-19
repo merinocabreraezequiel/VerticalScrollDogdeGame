@@ -8,5 +8,7 @@ func _process(delta):
 		queue_free()
 
 func _on_body_entered(body):
-	if body.name == "Car":
-		get_tree().call_group("main", "game_over")
+	print(body.name)
+	if body.name == "coche":
+		print("💥 Colisión detectada con el coche")
+		get_tree().call_group("game", "game_over")

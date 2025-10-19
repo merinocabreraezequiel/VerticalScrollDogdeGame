@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://68usq0hh5cyu"]
+[gd_scene load_steps=4 format=3 uid="uid://68usq0hh5cyu"]
 
 [ext_resource type="Script" uid="uid://cjnp3kjcm5xnd" path="res://obstaculo.gd" id="1_q7004"]
+[ext_resource type="Texture2D" uid="uid://1epsl4l36gc0" path="res://cono.png" id="2_phkyr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q7004"]
-radius = 52.009613
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ayu"]
+size = Vector2(64, 82)
 
 [node name="obstaculo" type="Area2D"]
 script = ExtResource("1_q7004")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -4.999998)
+scale = Vector2(0.20792882, 0.20792884)
+texture = ExtResource("2_phkyr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_q7004")
+position = Vector2(-2, -4)
+shape = SubResource("RectangleShape2D_61ayu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
