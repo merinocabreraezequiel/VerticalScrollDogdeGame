@@ -1,6 +1,7 @@
 extends Area2D
 
-var speed = 200.0
+var speed_base = 200.0
+var speed = speed_base
 
 func _process(delta):
 	position.y += speed * delta
@@ -10,5 +11,7 @@ func _process(delta):
 func _on_body_entered(body):
 	print(body.name)
 	if body.name == "coche":
-		print("💥 Colisión detectada con el coche")
-		get_tree().call_group("game", "game_over")
+		get_tree().root.get_node("game").game_over()
+
+func encrease_speed(new_speed):
+	speed = speed * new_speed

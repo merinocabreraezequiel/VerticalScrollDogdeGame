@@ -50,7 +50,7 @@ position = Vector2(-4, 5)
 shape = SubResource("RectangleShape2D_eow3j")
 
 [node name="obstaculos" parent="." instance=ExtResource("2_feb5d")]
-position = Vector2(410, 403)
+position = Vector2(414, 76)
 
 [node name="velocidad" type="Timer" parent="."]
 
@@ -59,3 +59,6 @@ position = Vector2(410, 403)
 [node name="UI" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[connection signal="timeout" from="velocidad" to="." method="_on_Timer_SpeedUp_timeout"]
+[connection signal="timeout" from="spawnTimer" to="." method="_on_Timer_Spawn_timeout"]
