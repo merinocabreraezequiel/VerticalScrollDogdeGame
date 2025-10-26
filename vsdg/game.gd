@@ -14,12 +14,13 @@ var is_game_over = false
 func _ready():
 	timer_speedup.wait_time = 30.0  # cada 30 segundos
 	timer_speedup.start()
-	timer_spawn.wait_time = 1.0     # generar obstáculo cada 1 seg (ajustable)
+	timer_spawn.wait_time = 2.0     # generar obstáculo cada X seg
 	timer_spawn.start()
 	ui.text = "Tiempo: 0 s"
 	
 func _process(delta):
 	if not is_game_over:
+		ui.text = "Tiempo: %.1f s" % (Time.get_ticks_msec() / 1000.0)
 		bg.scroll_speed = -1* scroll_speed * speed_multiplier #* delta
 	else:
 		bg.is_scrolling = false
@@ -30,15 +31,13 @@ func _process(delta):
 	#bg.position.y += scroll_speed * speed_multiplier * delta
 	#if bg.position.y >= bg.texture.get_height():
 	#	bg.position.y = 0
-	
-	# --- Actualiza UI ---
-	ui.text = "Tiempo: %.1f s" % (Time.get_ticks_msec() / 1000.0)
 
 func _on_Timer_SpeedUp_timeout():
-	speed_multiplier *= 1.05
+	speed_multiplier *= 1.5
 	print("🚀 Velocidad aumentada a %.2f" % speed_multiplier)
 
 func _on_Timer_Spawn_timeout():
+	print("Nuevo obstaculo")
 	spawn_obstacle()
 
 func spawn_obstacle():
@@ -54,6 +53,6 @@ func game_over():
 		return
 	is_game_over = true
 	print("💥 Juego terminado!")
-	ui.text = "💀 Fin del juego - Tiempo: %.1f s" % (Time.get_ticks_msec() / 1000.0)
 	timer_spawn.stop()
 	timer_speedup.stop()
+	ui.text = "💀 Fin del juego - Tiempo: %.1f s" % (Time.get_ticks_msec() / 1000.0)
