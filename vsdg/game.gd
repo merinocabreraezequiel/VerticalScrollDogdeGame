@@ -18,6 +18,7 @@ func _ready():
 	timer_spawn.start()
 	ui.text = "Tiempo: 0 s"
 	
+	
 func _process(delta):
 	if not is_game_over:
 		ui.text = "Tiempo: %.1f s" % (Time.get_ticks_msec() / 1000.0)
@@ -34,6 +35,10 @@ func _process(delta):
 
 func _on_Timer_SpeedUp_timeout():
 	speed_multiplier *= 1.5
+	var lista = get_tree().get_nodes_in_group("obstaculos")
+	for obstaculo in lista:
+		if obstaculo.has_method("mi_funcion_interna"):
+			obstaculo.new_speed_multiplier(speed_multiplier)
 	print("🚀 Velocidad aumentada a %.2f" % speed_multiplier)
 
 func _on_Timer_Spawn_timeout():
@@ -45,6 +50,7 @@ func spawn_obstacle():
 	var obstacle = obstacle_scene.instantiate()
 	var screen_size = get_viewport_rect().size
 	obstacle.position = Vector2(randf_range(50, screen_size.x - 50), -50)
+	obstacle.setSpeed(scroll_speed)
 	add_child(obstacle)
 	obstacles.append(obstacle)
 

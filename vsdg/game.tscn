@@ -36,7 +36,7 @@ texture = ExtResource("4_eow3j")
 stretch_mode = 1
 
 [node name="coche" type="CharacterBody2D" parent="."]
-position = Vector2(410, 638)
+position = Vector2(410, 562)
 floor_block_on_wall = false
 script = ExtResource("2_fc0e3")
 
