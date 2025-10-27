@@ -12,6 +12,7 @@ var obstacles = []
 var is_game_over = false
 
 func _ready():
+	get_node("obstaculos").position = Vector2(randf_range(50, get_viewport_rect().size.x - 50), 76)
 	timer_speedup.wait_time = 30.0  # cada 30 segundos
 	timer_speedup.start()
 	timer_spawn.wait_time = 2.0     # generar obstáculo cada X seg
@@ -25,13 +26,6 @@ func _process(delta):
 		bg.scroll_speed = -1* scroll_speed * speed_multiplier #* delta
 	else:
 		bg.is_scrolling = false
-	#if is_game_over:
-	#	return
-	
-	# --- Mueve el fondo ---
-	#bg.position.y += scroll_speed * speed_multiplier * delta
-	#if bg.position.y >= bg.texture.get_height():
-	#	bg.position.y = 0
 
 func _on_Timer_SpeedUp_timeout():
 	speed_multiplier *= 1.5
