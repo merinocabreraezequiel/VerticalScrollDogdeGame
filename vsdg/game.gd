@@ -35,8 +35,11 @@ func _process(delta):
 
 func _on_Timer_SpeedUp_timeout():
 	speed_multiplier *= 1.5
+	if timer_spawn.wait_time > 0.4:
+		timer_spawn.wait_time -= 0.2
+	#print(timer_spawn.wait_time)
 	var lista = get_tree().get_nodes_in_group("obstaculos")
-	print(len(lista))
+	#print(len(lista))
 	for obstaculo in lista:
 		if obstaculo.has_method("mi_funcion_interna"):
 			obstaculo.new_speed_multiplier(speed_multiplier)
