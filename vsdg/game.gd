@@ -37,10 +37,10 @@ func _on_Timer_SpeedUp_timeout():
 	for obstaculo in lista:
 		if obstaculo.has_method("mi_funcion_interna"):
 			obstaculo.new_speed_multiplier(speed_multiplier)
-	print("🚀 Velocidad aumentada a %.2f" % speed_multiplier)
+	#print("🚀 Velocidad aumentada a %.2f" % speed_multiplier)
 
 func _on_Timer_Spawn_timeout():
-	print("Nuevo obstaculo")
+	#print("Nuevo obstaculo")
 	spawn_obstacle()
 
 func spawn_obstacle():
@@ -57,7 +57,7 @@ func game_over():
 	if is_game_over:
 		return
 	is_game_over = true
-	print("💥 Juego terminado!")
+	#print("Game Over")
 	timer_spawn.stop()
 	timer_speedup.stop()
-	ui.text = "💀 Fin del juego - Tiempo: %.1f s" % (Time.get_ticks_msec() / 1000.0)
+	ui.text = "Game Over - Tiempo: %.1f s" % (Time.get_ticks_msec() / 1000.0)
