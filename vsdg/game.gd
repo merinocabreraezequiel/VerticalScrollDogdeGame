@@ -36,6 +36,7 @@ func _process(delta):
 func _on_Timer_SpeedUp_timeout():
 	speed_multiplier *= 1.5
 	var lista = get_tree().get_nodes_in_group("obstaculos")
+	print(len(lista))
 	for obstaculo in lista:
 		if obstaculo.has_method("mi_funcion_interna"):
 			obstaculo.new_speed_multiplier(speed_multiplier)
@@ -50,7 +51,8 @@ func spawn_obstacle():
 	var obstacle = obstacle_scene.instantiate()
 	var screen_size = get_viewport_rect().size
 	obstacle.position = Vector2(randf_range(50, screen_size.x - 50), -50)
-	obstacle.setSpeed(scroll_speed)
+	#obstacle.setSpeed(scroll_speed)
+	obstacle.new_speed_multiplier(speed_multiplier)
 	add_child(obstacle)
 	obstacles.append(obstacle)
 
