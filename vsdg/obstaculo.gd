@@ -22,5 +22,5 @@ func setSpeed(_speed):
 	speed = _speed
 
 func new_speed_multiplier(_new_speed_multiplier):
-	print("object increment speed")
+	#print("object increment speed")
 	speed_multiplier = _new_speed_multiplier
