@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var move_speed = 400.0
-var acceleration = 10.0  # controla qué tan rápido acelera o desacelera
+var acceleration = 10.0
 
 var touch_active := false
 var touch_offset := Vector2.ZERO
@@ -13,7 +13,7 @@ func _ready():
 
 func _input(event):
 	if event is InputEventScreenTouch:
-		print("evento tactil")
+		#print("evento tactil")
 		if event.pressed:
 			# ¿El toque está sobre este CharacterBody2D?
 			var local_pos = to_local(event.position)
@@ -32,7 +32,7 @@ func _input(event):
 	elif event is InputEventScreenDrag and touch_active:
 		var drag_target = event.position + touch_offset
 		target_x = drag_target.x
-		print(target_x)
+		#print(target_x)
 
 func _physics_process(delta):
 	if not get_tree().root.get_node("game").is_game_over:
