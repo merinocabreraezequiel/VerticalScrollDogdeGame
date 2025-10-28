@@ -8,7 +8,7 @@ func _ready():
 	
 
 func _process(delta):
-	if not get_tree().root.get_node("game").is_game_over:
+	if not Globalvars.gameover:
 		position.y += speed * speed_multiplier * delta
 		if position.y > get_viewport_rect().size.y + 50:
 			queue_free()
