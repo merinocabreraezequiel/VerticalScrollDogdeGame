@@ -14,7 +14,7 @@ func _ready():
 
 func _process(delta):
 	if not Globalvars.gameover:
-		position.y += speed * speed_multiplier * delta
+		position.y += speed * speed_multiplier * Globalvars.playerMultiplier * delta
 		if position.y > get_viewport_rect().size.y + 50:
 			queue_free()
 

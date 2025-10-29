@@ -3,10 +3,13 @@ extends Node
 var gameover = false
 var bgspeed = 200
 var percentage_multiple_respawn = 5
-var playerSelect = 1
+var playerSelect = 0
+var playerMultiplier = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if playerSelect > 1:
+		playerMultiplier = Globalvars.playerSelect/1.5 
 	pass # Replace with function body.
 
 func toggle_gameover():
