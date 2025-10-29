@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var texture_rect = $TextureRect
+@onready var texture_rect = $carretera01
 
 var scroll_speed = 200.0
 var scroll_offset = 0.0

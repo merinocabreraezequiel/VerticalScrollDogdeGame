@@ -1,21 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://68usq0hh5cyu"]
+[gd_scene load_steps=6 format=3 uid="uid://68usq0hh5cyu"]
 
 [ext_resource type="Script" uid="uid://cjnp3kjcm5xnd" path="res://obstaculo.gd" id="1_q7004"]
 [ext_resource type="Texture2D" uid="uid://1epsl4l36gc0" path="res://cono.png" id="2_phkyr"]
+[ext_resource type="Texture2D" uid="uid://cjvuon3okq3uv" path="res://img/cono01.png" id="3_61ayu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61ayu"]
 size = Vector2(64, 82)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kwqw"]
+size = Vector2(42, 79)
+
 [node name="obstaculo" type="Area2D"]
 script = ExtResource("1_q7004")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="cono00" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-1, -4.999998)
 scale = Vector2(0.20792882, 0.20792884)
 texture = ExtResource("2_phkyr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CS_cono00" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-2, -4)
 shape = SubResource("RectangleShape2D_61ayu")
+disabled = true
+
+[node name="cono01" type="Sprite2D" parent="."]
+position = Vector2(0.56250024, -4.236649)
+scale = Vector2(0.20347896, 0.20347899)
+texture = ExtResource("3_61ayu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -3.5)
+shape = SubResource("RectangleShape2D_2kwqw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
