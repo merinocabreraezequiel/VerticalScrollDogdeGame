@@ -36,7 +36,7 @@ func _on_Timer_SpeedUp_timeout():
 	var lista = get_tree().get_nodes_in_group("obstaculos")
 	#print(len(lista))
 	for obstaculo in lista:
-		if obstaculo.has_method("mi_funcion_interna"):
+		if obstaculo.has_method("new_speed_multiplier"):
 			obstaculo.new_speed_multiplier(speed_multiplier)
 	#print("🚀 Velocidad aumentada a %.2f" % speed_multiplier)
 
