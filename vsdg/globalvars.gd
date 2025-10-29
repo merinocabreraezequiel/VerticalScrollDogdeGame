@@ -3,6 +3,7 @@ extends Node
 var gameover = false
 var bgspeed = 200
 var percentage_multiple_respawn = 5
+var playerSelect = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -26,11 +26,13 @@ shape = SubResource("RectangleShape2D_61ayu")
 disabled = true
 
 [node name="cono01" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0.56250024, -4.236649)
 scale = Vector2(0.20347896, 0.20347899)
 texture = ExtResource("3_61ayu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CS_cono01" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(5, -3.5)
 shape = SubResource("RectangleShape2D_2kwqw")
 

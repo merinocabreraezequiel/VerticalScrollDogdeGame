@@ -8,21 +8,26 @@ var touch_offset := Vector2.ZERO
 
 var target_x := 0.0
 
+@onready var colshap = $CS_coche00
+
 func _ready():
 	target_x = position.x
-
+	colshap = get_node("CS_coche0"+str(Globalvars.playerSelect))
+	colshap.disabled = false
+	get_node("coche0"+str(Globalvars.playerSelect)).visible = true
+	
 func _input(event):
 	if event is InputEventScreenTouch:
 		#print("evento tactil")
 		if event.pressed:
 			# ¿El toque está sobre este CharacterBody2D?
 			var local_pos = to_local(event.position)
-			if $CollisionShape2D.shape is CircleShape2D:
-				if local_pos.length() <= $CollisionShape2D.shape.radius:
+			if colshap.shape is CircleShape2D:
+				if local_pos.length() <= colshap.shape.radius:
 					touch_active = true
 					touch_offset = position - event.position
-			elif $CollisionShape2D.shape is RectangleShape2D:
-				var rect = Rect2(-$CollisionShape2D.shape.size / 2, $CollisionShape2D.shape.size)
+			elif colshap.shape is RectangleShape2D:
+				var rect = Rect2(-colshap.shape.size / 2, colshap.shape.size)
 				if rect.has_point(local_pos):
 					touch_active = true
 					touch_offset = position - event.position
