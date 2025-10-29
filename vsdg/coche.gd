@@ -15,6 +15,7 @@ func _ready():
 	colshap = get_node("CS_coche0"+str(Globalvars.playerSelect))
 	colshap.disabled = false
 	get_node("coche0"+str(Globalvars.playerSelect)).visible = true
+	move_speed *= Globalvars.playerMultiplier
 	
 func _input(event):
 	if event is InputEventScreenTouch:
