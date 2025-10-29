@@ -30,7 +30,7 @@ script = ExtResource("1_e2o6t")
 [node name="background" type="Sprite2D" parent="."]
 script = ExtResource("2_7jktm")
 
-[node name="carretera" type="TextureRect" parent="background"]
+[node name="carretera00" type="TextureRect" parent="background"]
 visible = false
 material = SubResource("ShaderMaterial_j5wjh")
 anchors_preset = 15
@@ -46,6 +46,7 @@ texture = ExtResource("4_eow3j")
 stretch_mode = 1
 
 [node name="carretera01" type="TextureRect" parent="background"]
+visible = false
 material = SubResource("ShaderMaterial_vef74")
 offset_left = 6.0
 offset_right = 806.0
@@ -68,14 +69,15 @@ texture = ExtResource("6_eow3j")
 visible = false
 position = Vector2(-4, 5)
 shape = SubResource("RectangleShape2D_eow3j")
-disabled = true
 
 [node name="coche01" type="Sprite2D" parent="coche"]
+visible = false
 position = Vector2(-2.0000038, 7)
 scale = Vector2(0.30823296, 0.3082329)
 texture = ExtResource("7_j5wjh")
 
 [node name="CS_coche01" type="CollisionShape2D" parent="coche"]
+visible = false
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_vef74")
 

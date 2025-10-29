@@ -3,8 +3,13 @@ extends Area2D
 var speed = 160.0
 var speed_multiplier = 1.0
 
+@onready var cono = $cono00
+@onready var cs_cono = $CS_cono00
+
 func _ready():
-	add_to_group("obstaculos")  # 🔹 Así el Main puede encontrarlos fácilmente
+	add_to_group("obstaculos")
+	get_node("cono0"+str(Globalvars.playerSelect)).visible = true
+	get_node("CS_cono0"+str(Globalvars.playerSelect)).disabled = false
 	
 
 func _process(delta):
