@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://lyopwxu2pmqg"]
+
+[ext_resource type="Script" uid="uid://b05m5heeq51ge" path="res://control.gd" id="1_ylum6"]
+[ext_resource type="Texture2D" uid="uid://dahami5or4khg" path="res://botones/00.png" id="2_7e6sy"]
+[ext_resource type="Texture2D" uid="uid://biw1t2rkcq34m" path="res://botones/01.png" id="3_x8a4r"]
+[ext_resource type="Texture2D" uid="uid://cdygb0up6yriw" path="res://botones/02.png" id="4_xagyt"]
+[ext_resource type="Texture2D" uid="uid://143tvrpu2rcc" path="res://botones/03.png" id="5_hpmgr"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ylum6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 1096.0
+
+[node name="Boton00" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture_normal = ExtResource("2_7e6sy")
+
+[node name="Boton01" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_x8a4r")
+
+[node name="Boton02" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_xagyt")
+
+[node name="Boton03" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture_normal = ExtResource("5_hpmgr")
