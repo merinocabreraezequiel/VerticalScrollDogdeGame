@@ -16,5 +16,5 @@ data_*/
 mono_crash.*.json
 
 #Own
-.tif
+*.tif
 vsdg/bin/*
