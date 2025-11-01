@@ -5,6 +5,7 @@ var bgspeed = 200
 var percentage_multiple_respawn = 5
 var playerSelect = 0
 var playerMultiplier = 1.0
+var gametime = '00:00:00'
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,3 +24,11 @@ func update_precentage_multiple_respawn(_percentage_multiple_respawn):
 
 func get_probavility(_percentage:float):
 	return randf() * 100 < _percentage
+
+func reinit():
+	gameover = false
+	bgspeed = 200
+	percentage_multiple_respawn = 5
+	if playerSelect > 1:
+		playerMultiplier = Globalvars.playerSelect/1.5 
+	gametime = '00:00:00'

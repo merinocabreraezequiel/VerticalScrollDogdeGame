@@ -7,6 +7,8 @@ var speed_multiplier = 1.0
 @onready var cs_cono = $CS_cono00
 
 func _ready():
+	speed = 160.0
+	speed_multiplier = 1.0
 	add_to_group("obstaculos")
 	get_node("cono0"+str(Globalvars.playerSelect)).visible = true
 	get_node("CS_cono0"+str(Globalvars.playerSelect)).disabled = false

@@ -5,6 +5,7 @@ extends Node2D
 @onready var timer_speedup = $velocidad
 @onready var timer_spawn = $spawnTimer
 @onready var ui = $UI
+@onready var game_over_slide = $GAME_OVER
 
 var scroll_speed = 200.0
 var speed_multiplier = 1.0
@@ -65,3 +66,7 @@ func game_over():
 	timer_spawn.stop()
 	timer_speedup.stop()
 	ui.text = "Game Over - Tiempo: %.1f s" % (Time.get_ticks_msec() / 1000.0)
+	Globalvars.gametime = (Time.get_ticks_msec() / 1000.0)
+	game_over_slide.udpateTime(Globalvars.gametime)
+	#move_child(game_over_slide, 5)
+	game_over_slide.visible = true

@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv5oaxob4rou6"]
+
+[ext_resource type="Script" uid="uid://eo6jjkv6qxdy" path="res://game_over.gd" id="1_ccer4"]
+[ext_resource type="Texture2D" uid="uid://clk8tciblfgnr" path="res://botones/repetir.png" id="1_yxx3c"]
+[ext_resource type="Texture2D" uid="uid://dgyyv2a3jikh4" path="res://botones/menu.png" id="2_ccer4"]
+[ext_resource type="Texture2D" uid="uid://dwayj0r3t286g" path="res://botones/cerrar.png" id="4_8u835"]
+
+[node name="GAME_OVER" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ccer4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 574.0
+offset_bottom = 359.0
+color = Color(0.5106012, 0.5106013, 0.5106012, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 574.0
+offset_bottom = 355.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="lbl_tiempofinal" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Tu tiempo de juego ha sido de:"
+horizontal_alignment = 1
+
+[node name="lbl_tiemponumero" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 78
+
+[node name="btn_volverjugar" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("1_yxx3c")
+
+[node name="btn_volverinicio" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("2_ccer4")
+
+[node name="btn_cerrar" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("4_8u835")
