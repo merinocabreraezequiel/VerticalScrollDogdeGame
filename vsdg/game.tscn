@@ -1,0 +1,166 @@
+[gd_scene load_steps=23 format=3 uid="uid://kc4e3yrj3pto"]
+
+[ext_resource type="Script" uid="uid://baaodlg65kjg1" path="res://game.gd" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://dgjjxe01jetj5" path="res://background.gd" id="2_7jktm"]
+[ext_resource type="Script" uid="uid://cd08vbpqd3dcd" path="res://coche.gd" id="2_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://68usq0hh5cyu" path="res://obstaculo.tscn" id="2_feb5d"]
+[ext_resource type="Shader" uid="uid://d106xwvlloy5i" path="res://background.gdshader" id="3_ryrav"]
+[ext_resource type="Texture2D" uid="uid://bastt8wku503d" path="res://carretera.png" id="4_eow3j"]
+[ext_resource type="Texture2D" uid="uid://b5ed4seusfsc1" path="res://img/carretera01.png" id="5_vef74"]
+[ext_resource type="Texture2D" uid="uid://7md2ly8kq0g0" path="res://car.png" id="6_eow3j"]
+[ext_resource type="Texture2D" uid="uid://8lrjdo5vbont" path="res://img/carretera02.png" id="6_lc2xo"]
+[ext_resource type="Texture2D" uid="uid://jfn424bkyha" path="res://img/carretera03.png" id="7_215e1"]
+[ext_resource type="Texture2D" uid="uid://d5e2tj5gdxsk" path="res://img/car01.png" id="7_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://bty20qj767yx1" path="res://img/car02.png" id="11_7sc4i"]
+[ext_resource type="Texture2D" uid="uid://bud44wkdct7lk" path="res://img/car03.png" id="12_80cx4"]
+[ext_resource type="PackedScene" uid="uid://dv5oaxob4rou6" path="res://game_over.tscn" id="14_215e1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j5wjh"]
+shader = ExtResource("3_ryrav")
+shader_parameter/scroll_y = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vef74"]
+shader = ExtResource("3_ryrav")
+shader_parameter/scroll_y = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8heu"]
+shader = ExtResource("3_ryrav")
+shader_parameter/scroll_y = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rvswv"]
+shader = ExtResource("3_ryrav")
+shader_parameter/scroll_y = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
+size = Vector2(163, 202.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vef74"]
+size = Vector2(154, 166)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boyg6"]
+size = Vector2(175, 226)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e36ub"]
+radius = 91.91
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_e2o6t")
+
+[node name="background" type="Sprite2D" parent="."]
+script = ExtResource("2_7jktm")
+
+[node name="carretera00" type="TextureRect" parent="background"]
+visible = false
+material = SubResource("ShaderMaterial_j5wjh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 806.0
+offset_bottom = 809.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_eow3j")
+stretch_mode = 1
+
+[node name="carretera01" type="TextureRect" parent="background"]
+visible = false
+material = SubResource("ShaderMaterial_vef74")
+offset_left = 6.0
+offset_right = 806.0
+offset_bottom = 800.0
+texture = ExtResource("5_vef74")
+stretch_mode = 1
+
+[node name="carretera02" type="TextureRect" parent="background"]
+visible = false
+material = SubResource("ShaderMaterial_e8heu")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_lc2xo")
+stretch_mode = 1
+
+[node name="carretera03" type="TextureRect" parent="background"]
+visible = false
+material = SubResource("ShaderMaterial_rvswv")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_215e1")
+stretch_mode = 1
+
+[node name="coche" type="CharacterBody2D" parent="."]
+position = Vector2(410, 562)
+floor_block_on_wall = false
+script = ExtResource("2_fc0e3")
+
+[node name="coche00" type="Sprite2D" parent="coche"]
+visible = false
+position = Vector2(-6, -1)
+scale = Vector2(0.36144578, 0.36144575)
+texture = ExtResource("6_eow3j")
+
+[node name="CS_coche00" type="CollisionShape2D" parent="coche"]
+visible = false
+position = Vector2(-4, 5)
+shape = SubResource("RectangleShape2D_eow3j")
+disabled = true
+
+[node name="coche01" type="Sprite2D" parent="coche"]
+visible = false
+position = Vector2(-2.0000038, 7)
+scale = Vector2(0.30823296, 0.3082329)
+texture = ExtResource("7_j5wjh")
+
+[node name="CS_coche01" type="CollisionShape2D" parent="coche"]
+visible = false
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_vef74")
+disabled = true
+
+[node name="coche02" type="Sprite2D" parent="coche"]
+visible = false
+position = Vector2(-2.25, 1.3132324)
+scale = Vector2(0.34638554, 0.3463855)
+texture = ExtResource("11_7sc4i")
+
+[node name="CS_coche02" type="CollisionShape2D" parent="coche"]
+visible = false
+position = Vector2(-5.5, -3)
+shape = SubResource("RectangleShape2D_boyg6")
+disabled = true
+
+[node name="coche03" type="Sprite2D" parent="coche"]
+visible = false
+position = Vector2(-1.5, -2.923706)
+scale = Vector2(0.35943767, 0.35943767)
+texture = ExtResource("12_80cx4")
+
+[node name="CS_coche03" type="CollisionShape2D" parent="coche"]
+visible = false
+position = Vector2(-3, 6)
+shape = SubResource("CircleShape2D_e36ub")
+disabled = true
+
+[node name="obstaculos" parent="." instance=ExtResource("2_feb5d")]
+position = Vector2(414, 76)
+
+[node name="velocidad" type="Timer" parent="."]
+
+[node name="spawnTimer" type="Timer" parent="."]
+
+[node name="UI" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="GAME_OVER" parent="." instance=ExtResource("14_215e1")]
+visible = false
+z_index = 5
+z_as_relative = false
+offset_left = 138.0
+offset_top = 89.0
+offset_right = 138.0
+offset_bottom = 89.0
+
+[connection signal="timeout" from="velocidad" to="." method="_on_Timer_SpeedUp_timeout"]
+[connection signal="timeout" from="spawnTimer" to="." method="_on_Timer_Spawn_timeout"]
