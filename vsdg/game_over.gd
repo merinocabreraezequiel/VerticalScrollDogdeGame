@@ -13,6 +13,8 @@ func _ready() -> void:
 			botones[i].pressed.connect(_on_boton_presionado.bind(i))
 		else:
 			push_warning("Botón %d no encontrado" % i)
+	if OS.has_feature("web"):
+		get_node("VBoxContainer/HBoxContainer2/btn_cerrar").visible = false
 	pass # Replace with function body.
 
 
@@ -23,7 +25,7 @@ func _process(delta: float) -> void:
 func _on_boton_presionado(indice):
 	Globalvars.reinit()
 	if indice == 0:
-		get_tree().change_scene_to_file("res://game.tscn")
+		get_tree().reload_current_scene()
 	elif indice == 1:
 		get_tree().change_scene_to_file("res://inicio.tscn")
 	elif indice == 2:

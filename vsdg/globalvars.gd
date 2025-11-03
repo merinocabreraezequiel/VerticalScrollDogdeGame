@@ -29,6 +29,7 @@ func reinit():
 	gameover = false
 	bgspeed = 200
 	percentage_multiple_respawn = 5
+	playerMultiplier = 1.0
 	if playerSelect > 1:
 		playerMultiplier = Globalvars.playerSelect/1.5 
 	gametime = '00:00:00'
