@@ -25,6 +25,11 @@ func update_precentage_multiple_respawn(_percentage_multiple_respawn):
 func get_probavility(_percentage:float):
 	return randf() * 100 < _percentage
 
+func update_player_select(_playerselect):
+	playerSelect = _playerselect
+	if playerSelect > 1:
+		playerMultiplier = playerSelect/1.5 
+
 func reinit():
 	gameover = false
 	bgspeed = 200
