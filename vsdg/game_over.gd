@@ -10,7 +10,7 @@ extends Control
 func _ready() -> void:
 	for i in range(botones.size()):
 		if botones[i]:
-			if OS.has_feature("android") or OS.has_feature("web"):
+			if OS.has_feature("android"):
 				botones[i].connect("gui_input", Callable(self, "_on_boton_input").bind(i))
 			else:
 				botones[i].pressed.connect(_on_boton_presionado.bind(i))

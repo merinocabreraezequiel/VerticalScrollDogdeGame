@@ -39,6 +39,6 @@ func _on_boton_input(event: InputEvent, index: int) -> void:
 		seleccionar(index)
 
 func seleccionar(valor):
-	Globalvars.playerSelect = valor
+	Globalvars.update_player_select(valor)
 	print("Seleccionado:", valor)
 	get_tree().change_scene_to_file("res://game.tscn")
