@@ -41,7 +41,7 @@ func _input(event):
 		#print(target_x)
 
 func _physics_process(delta):
-	if not Globalvars.gameover:
+	if not Globalvars.gameover and Globalvars.gameon:
 		var input_dir := 0.0
 		
 		if Input.is_action_pressed("ui_left"):

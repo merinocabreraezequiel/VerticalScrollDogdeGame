@@ -12,10 +12,10 @@ func _ready():
 	add_to_group("obstaculos")
 	get_node("cono0"+str(Globalvars.playerSelect)).visible = true
 	get_node("CS_cono0"+str(Globalvars.playerSelect)).disabled = false
-	print("process::> speed: "+ str(speed) + " - multiplier: " + str(speed_multiplier) + " - playerMultipier: " + str(Globalvars.playerMultiplier))
+	#print("process::> speed: "+ str(speed) + " - multiplier: " + str(speed_multiplier) + " - playerMultipier: " + str(Globalvars.playerMultiplier))
 
 func _process(delta):
-	if not Globalvars.gameover:
+	if not Globalvars.gameover and Globalvars.gameon:
 		#print("process::> speed: ", speed," - multiplier: ", speed_multiplier," - playerMultipier: ", Globalvars.playerMultiplier)
 		position.y += speed * speed_multiplier * Globalvars.playerMultiplier * delta
 		if position.y > get_viewport_rect().size.y + 50:
