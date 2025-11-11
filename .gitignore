@@ -18,3 +18,4 @@ mono_crash.*.json
 #Own
 *.tif
 vsdg/bin/*
+vsdg/android/*

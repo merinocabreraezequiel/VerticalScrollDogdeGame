@@ -50,7 +50,7 @@ func startGame():
 	scroll_speed = Globalvars.bgspeed
 	start_time = Time.get_ticks_msec()
 	bg.is_scrolling = true
-	Globalvars.gameon=true
+	Globalvars.gameon = true
 
 func get_scene_elapsed_time() -> float:
 	return (Time.get_ticks_msec() - start_time) / 1000.0
