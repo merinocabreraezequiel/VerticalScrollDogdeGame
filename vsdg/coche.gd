@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var move_speed = 200.0
 var acceleration = 60.0
+var is_jumping = false
 
 var touch_active := false
 var touch_offset := Vector2.ZERO
@@ -9,6 +10,7 @@ var touch_offset := Vector2.ZERO
 var target_x := 0.0
 
 @onready var colshap = $CS_coche00
+@onready var tween := get_tree().create_tween()
 
 func _ready():
 	target_x = position.x
@@ -48,7 +50,9 @@ func _physics_process(delta):
 			input_dir -= 1.0
 		if Input.is_action_pressed("ui_right"):
 			input_dir += 1.0
-
+		if Input.is_action_pressed("ui_select"):
+			goJump()
+			
 		if input_dir != 0:
 			target_x = position.x + input_dir * move_speed * delta
 
@@ -56,3 +60,22 @@ func _physics_process(delta):
 
 		var screen_size = get_viewport_rect().size
 		position.x = clamp(position.x, 32, screen_size.x - 32)
+
+func goJump():
+	if is_jumping:
+		return
+	is_jumping = true
+	colshap.disabled = true
+
+	var original_scale = scale
+	var jump_scale = scale * 1.3
+	var half_time = 2 / 2
+
+	tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", jump_scale, half_time).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "scale", original_scale, half_time).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.finished.connect(_on_jump_finished)
+
+func _on_jump_finished():
+	is_jumping = false
+	colshap.disabled = false
