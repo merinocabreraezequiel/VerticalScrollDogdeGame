@@ -72,5 +72,7 @@ theme_override_colors/font_color = Color(0.26447403, 0.6058289, 0.32084957, 1)
 theme_override_colors/font_outline_color = Color(0.69094163, 0.42595926, 0.11411924, 1)
 theme_override_font_sizes/font_size = 29
 text = "Para moverte, utiliza las flechas
-derecha e izquieda o arrastra con el ratón"
+derecha e izquieda o arrastra con el ratón
+Pulsa espacio para saltar o pulsa dos veces
+sobre el vehiculo"
 horizontal_alignment = 1

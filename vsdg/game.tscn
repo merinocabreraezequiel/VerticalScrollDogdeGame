@@ -90,7 +90,12 @@ offset_bottom = 40.0
 texture = ExtResource("7_215e1")
 stretch_mode = 1
 
+[node name="obstaculos" parent="." instance=ExtResource("2_feb5d")]
+position = Vector2(414, 76)
+
 [node name="coche" type="CharacterBody2D" parent="."]
+z_index = 3
+z_as_relative = false
 position = Vector2(410, 562)
 floor_block_on_wall = false
 script = ExtResource("2_fc0e3")
@@ -143,14 +148,13 @@ position = Vector2(-3, 6)
 shape = SubResource("CircleShape2D_e36ub")
 disabled = true
 
-[node name="obstaculos" parent="." instance=ExtResource("2_feb5d")]
-position = Vector2(414, 76)
-
 [node name="velocidad" type="Timer" parent="."]
 
 [node name="spawnTimer" type="Timer" parent="."]
 
 [node name="cuentaatras" parent="." instance=ExtResource("14_7sc4i")]
+z_index = 3
+z_as_relative = false
 position = Vector2(421, 365)
 
 [node name="UI" type="Label" parent="."]

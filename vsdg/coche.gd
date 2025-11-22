@@ -69,7 +69,7 @@ func goJump():
 
 	var original_scale = scale
 	var jump_scale = scale * 1.3
-	var half_time = 2 / 2
+	var half_time = 1.8 / 2
 
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", jump_scale, half_time).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
