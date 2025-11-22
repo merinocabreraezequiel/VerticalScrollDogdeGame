@@ -13,20 +13,15 @@ var obstacles = []
 var start_time:=0
 
 func _ready():
+	bg.is_scrolling = false
 	get_node("obstaculos").position = Vector2(randf_range(50, get_viewport_rect().size.x - 50), 76)
-	timer_speedup.wait_time = 30.0  # cada 30 segundos
-	timer_speedup.start()
-	timer_spawn.wait_time = 2.0     # generar obstáculo cada X seg
-	timer_spawn.start()
-	scroll_speed = Globalvars.bgspeed
-	start_time = Time.get_ticks_msec()
 	ui.text = "Tiempo: 0 s"
 	
 	
 func _process(delta):
-	if not Globalvars.gameover:
+	if not Globalvars.gameover and Globalvars.gameon:
 		ui.text = "Tiempo: %.1f s" % (get_scene_elapsed_time())
-		bg.scroll_speed = -1* scroll_speed * speed_multiplier #* delta
+		bg.scroll_speed = -1 * scroll_speed * speed_multiplier #* delta
 	else:
 		bg.is_scrolling = false
 
@@ -46,6 +41,16 @@ func _on_Timer_SpeedUp_timeout():
 func _on_Timer_Spawn_timeout():
 	#print("Nuevo obstaculo")
 	spawn_obstacle()
+
+func startGame():
+	timer_speedup.wait_time = 30.0  # cada 30 segundos
+	timer_speedup.start()
+	timer_spawn.wait_time = 2.0     # generar obstáculo cada X seg
+	timer_spawn.start()
+	scroll_speed = Globalvars.bgspeed
+	start_time = Time.get_ticks_msec()
+	bg.is_scrolling = true
+	Globalvars.gameon = true
 
 func get_scene_elapsed_time() -> float:
 	return (Time.get_ticks_msec() - start_time) / 1000.0

@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 func _on_boton_presionado(indice):
 	Globalvars.reinit()
 	if indice == 0:
-		get_tree().change_scene_to_file("res://game.tscn")
+		get_tree().reload_current_scene()
 	elif indice == 1:
 		get_tree().change_scene_to_file("res://inicio.tscn")
 	elif indice == 2:

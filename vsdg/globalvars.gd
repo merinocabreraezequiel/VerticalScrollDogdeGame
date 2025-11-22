@@ -1,6 +1,7 @@
 extends Node
 
 var gameover = false
+var gameon = false
 var bgspeed = 200
 var percentage_multiple_respawn = 5
 var playerSelect = 0
@@ -32,6 +33,7 @@ func update_player_select(_playerselect):
 
 func reinit():
 	gameover = false
+	gameon = false
 	bgspeed = 200
 	percentage_multiple_respawn = 5
 	playerMultiplier = 1.0
