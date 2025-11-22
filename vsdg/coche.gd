@@ -2,7 +2,10 @@ extends CharacterBody2D
 
 var move_speed = 200.0
 var acceleration = 60.0
+
 var is_jumping = false
+var last_press_time := 0.0
+var double_tap_time := 0.5
 
 var touch_active := false
 var touch_offset := Vector2.ZERO
@@ -34,6 +37,12 @@ func _input(event):
 				if rect.has_point(local_pos):
 					touch_active = true
 					touch_offset = position - event.position
+			if touch_active:
+				var now = Time.get_ticks_msec() / 1000.0    # segundos actuales
+				if now - last_press_time <= double_tap_time:
+			   	 	# Doble pulsación detectada
+					goJump()
+				last_press_time = now
 		else:
 			touch_active = false
 
